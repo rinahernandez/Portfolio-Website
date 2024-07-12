@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #e1e0e0; 
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #201e1f;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        header {
+            background-color: #f0f0f0;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        nav ul li {
+            margin-left: 20px;
+        }
+        nav ul li a {
+            color: #f4f4f4;
+            text-decoration: none;
+            padding: 5px 10px;
+            transition: background-color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #ff69b4;
+            border-radius: 4px;
+        }
+        section {
+            margin: 20px 0;
+        }
+        section h2, section h3 { 
+            color: #ff1493;
+            font-size: 2em;  
+        }
+        section p {
+            color: #e1e0e0;
+        }
+        #home {
+            background-image: url('image2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+        }
+        #home .home-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 1200px;
+            animation: fadeIn 2s ease-in-out;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(-20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .home-content img {
+            border-radius: 20%;
+            max-height: 270px;
+            width: 80%;
+            max-width: 300px;
+            padding: 1vh;
+            background-color: #ff69b4;
+            animation: slideInFromLeft 2s ease-in-out;
+        }
+        @keyframes slideInFromLeft {
+            0% { opacity: 0; transform: translateX(-100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .home-content .text-content {
+            text-align: right;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            animation: slideInFromRight 2s ease-in-out;
+        }
+        @keyframes slideInFromRight {
+            0% { opacity: 0; transform: translateX(100px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+        .home-content h1 {
+            font-size: 2em;
+            color: #ff1493;
+            margin: 0;
+        }
+        .home-content p {
+            margin-top: 10px;
+            font-size: 1.2em;
+        }
+        .home-content button {
+            margin-top: 20px;
+            color: #ff1493;
+            font-size: larger;
+            font-weight: bold;
+            border-radius: 40%;
+            padding: 10px 20px;
+            background: none;
+            border: 2px solid #ff1493;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .home-content button:hover {
+            background-color: #ff1493;
+            color: white;
+        }
+        .about {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            padding: 1vh;
+        }
+        .text-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-right: 1vh;
+        }
+        #about h2 {
+            color: #ff1493;
+            margin-bottom: 1em;
+            font-size: 2em;
+        }
+        .about p {
+            max-width: 100%;
+            margin: 1em 0;
+            padding: 0;
+            text-align: justify;
+        }
+        .image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .image img {
+            max-height: 60vh;
+            max-width: 100%;
+            padding: 1vh;
+            border-color: #ff1493;
+            border-inline-start-style: groove;
+            border-inline-end-style: groove;
+            border-radius: 20px;
+            margin-top: 1em;
+        }
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: space-between;
+        }
+        .project {
+            flex: 1 1 calc(33.333% - 20px);
+            background-color: #fc3fa4;
+            padding: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .proj-image {
+            height: 150px;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+        .project h4 {
+            margin-top: 0;
+            font-size: 1.5em; 
+            color: #d6c1cc;
+        }
+        .project p {
+            color: #777;
+            font-size: 1em;
+            line-height: 1.5;
+        }
+        .project a {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            margin-top: 10px;
+            transition: background-color 0.3s;
+        }
+        .project a:hover {
+            background-color: #ff1493;
+        }
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        form input, form textarea, form button {
+            width: 96%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+        }
+        form button {
+            background-color: #ff69b4;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        form button:hover {
+            background-color: #ff1493;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-links a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 50%;
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            transition: background-color 0.3s;
+        }
+        .social-links a:hover {
+            background-color: #ff69b4;
+        }
+        .social-links i {
+            font-size: 20px;
+        }
+        footer {
+            background-color: #3f3e3e;
+            color: #ff7dd1;
+            text-align: center;
+            padding: 10px 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
+            #home {
+                height: auto;
+                padding: 20px 0;
+            }
+            .home-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            .home-content img {
+                margin-right: 0;
+                margin-bottom: 20px;
+                width: 80%;
+            }
+            .about img {
+                margin-right: 0;
+                margin-top: 20px;
+                max-width: 100%;
+            }
+            .project {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="logo.png" alt="logo" style="height: 55px;">
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="container">
+        <div class="home-content">
+            <img src="image1.png" alt="profile pic">
+            <div class="text-content">
+                <h1>Welcome to my portfolio!!</h1>
+                <p>
+                    <span class="spacer">I am</span>
+                    <span style="color: #ff1493;">RINA ROSE</span>
+                    <span>“A passion for creating engaging visuals that communicate clear messages”</span>
+                </p>
+                <button onclick="location.href='#contact'">Hire Me</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <div class="about">
+            <div class="text-content">
+                <h2>About Me</h2>
+                <p>Hello! I'm Rina Rose Hernandez, currently a second-year student at Dalubhasaan ng Lungsod ng Lucena, studying Information Technology. I love working in technology and have a special interest in designing. My goal is to enhance my knowledge in technology. I'm constantly learning and improving my skills through various projects. In my free time, I enjoy exploring new creative challenges. Welcome to my portfolio, and feel free to connect with me.</p>
+            </div>
+            <div class="image">
+                <img src="image.png" alt="pic">
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="container">
+        <h3>Projects</h3>
+        <div class="project-grid">
+            <div class="project">
+                <h4>Project 1</h4>
+                <img src="calculator.png" alt="Project 1" class="proj-image">
+                <p>------------------------------------------</p>
+                <a href="https://rinahernandez.github.io/ipt101-calaculator-app/" style="color: rgb(25, 20, 22); font-style: unset;font-weight: bold; text-shadow:#3f3e3e" >VIEW</a>
+            </div>
+            <div class="project">
+                <h4>Project 2</h4>
+                <img src="project-6.jpeg" alt="Project 2" class="proj-image">
+                <p>-------------------------------------------</p>
+                <a href="https://www.facebook.com/p/Its-a-Prank-100069270911631/" style="color: rgb(25, 20, 22); font-style: unset; font-weight: bold; text-shadow: #3f3e3e;">VIEW</a>
+            </div>
+            <div class="project">
+                <h4>Project 3</h4>
+                <img src="night.jpg" alt="Project 3" class="proj-image">
+                <p>--------------------------------------------</p>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h3>Contact Me</h3>
+        <form id="contact-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Send</button>
+        </form>
+        <div class="social-links">
+            <a href="https://www.facebook.com/profile.php?id=100083605077346&sk=about" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rn_hrndz/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://t.me/ynaaaxd" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+            <a href="https://github.com/rinahernandez" target="_blank"><i class="fab fa-github"></i></a>
+        </div>
+    </section>
+
+    <footer class="container">
+        <p>&copy; 2024 Rina's Portfolio. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Thank you for your message!');
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+            });
+        });
+    });
+
+    </script>
+</body>
+</html>
